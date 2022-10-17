@@ -1,0 +1,15 @@
+[package]
+name = "rune_changer"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+base64 = "0.13.0"
+itertools = "0.10.5"
+regex = "1.6.0"
+reqwest = {version="0.11.12", features= ["blocking"]}
+serde = {version="1.0.145", features= ["derive"]}
+serde_json = "1.0.86"
+v = "0.1.0"
