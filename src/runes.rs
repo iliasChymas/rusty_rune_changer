@@ -5,9 +5,9 @@ use regex;
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Runes {
     name: String,
-    primary_style_id: i32,
-    sub_style_id: i32,
-    selected_perk_ids: Vec<i32>,
+    primaryStyleId: i32,
+    subStyleId: i32,
+    selectedPerkIds: Vec<i32>,
     current: bool
 }
 
@@ -24,18 +24,25 @@ impl Runes {
                 None => { result = -1 },
             }
             runes.push(result);
+        }   
+
+        let mut output: Vec<i32> = Vec::new();
+        let mut flag: bool = true;
+        for rune in runes {
+            if flag {
+                output.push(rune);
+            }
+            flag = !flag;
         }
         
-        runes.dedup();
-        runes.push(5003);
 
-        println!("{:?}", runes);
+        println!("{:?}", output);
         
         Self {
             name: "Quandale".to_string(),
-            primary_style_id: Self::get_tree(runes[0]),
-            sub_style_id: Self::get_tree(runes[4]),
-            selected_perk_ids: runes,
+            primaryStyleId: Self::get_tree(output[0]),
+            subStyleId: Self::get_tree(output[4]),
+            selectedPerkIds: output,
             current: true,
             
         }
