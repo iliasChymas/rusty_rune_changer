@@ -1,14 +1,13 @@
 use reqwest;
 use serde::{Deserialize, Serialize};
 use regex;
-use itertools::Itertools;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Runes {
     name: String,
-    pub primaryStyleId: i32,
-    subStyleId: i32,
-    selectedPerkIds: Vec<i32>,
+    primary_style_id: i32,
+    sub_style_id: i32,
+    selected_perk_ids: Vec<i32>,
     current: bool
 }
 
@@ -28,15 +27,15 @@ impl Runes {
         }
         
         runes.dedup();
-        runes.push(runes[runes.len() -1]);
+        runes.push(5003);
 
         println!("{:?}", runes);
         
         Self {
             name: "Quandale".to_string(),
-            primaryStyleId: Self::get_tree(runes[0]),
-            subStyleId: Self::get_tree(runes[4]),
-            selectedPerkIds: runes,
+            primary_style_id: Self::get_tree(runes[0]),
+            sub_style_id: Self::get_tree(runes[4]),
+            selected_perk_ids: runes,
             current: true,
             
         }

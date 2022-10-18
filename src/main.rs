@@ -1,11 +1,17 @@
 mod lolclient;
 mod runes;
-use crate::lolclient::LolClient;
 
+use crate::lolclient::LolClient;
 fn main() {
-    println!("Hello, world!");
-    // let mut client: LolClient = LolClient::new();
-    // client.get_current_summoner();
-    // client.change_runes();
-    // println!("{}", client.creds.password);
+    let client = match LolClient::new() {
+        Ok(t) => { t },
+        Err(_) => {
+            println!("YOu need to initialize the client first !");
+            std::process::exit(1)
+        }
+    };
+    match client.change_runes() {
+        Ok(_) => { println!("Runes changed")},
+        Err(msg) => { println!("{}", msg) },
+    };
 }
