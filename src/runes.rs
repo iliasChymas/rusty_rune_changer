@@ -3,11 +3,12 @@ use serde::{Deserialize, Serialize};
 use regex;
 
 #[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
 pub struct Runes {
     name: String,
-    primaryStyleId: i32,
-    subStyleId: i32,
-    selectedPerkIds: Vec<i32>,
+    primary_style_id: i32,
+    sub_style_id: i32,
+    selected_perk_ids: Vec<i32>,
     current: bool
 }
 
@@ -40,9 +41,9 @@ impl Runes {
         
         Self {
             name: "Quandale".to_string(),
-            primaryStyleId: Self::get_tree(output[0]),
-            subStyleId: Self::get_tree(output[4]),
-            selectedPerkIds: output,
+            primary_style_id: Self::get_tree(output[0]),
+            sub_style_id: Self::get_tree(output[4]),
+            selected_perk_ids: output,
             current: true,
             
         }

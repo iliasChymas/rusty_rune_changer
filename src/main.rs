@@ -6,7 +6,7 @@ fn main() {
     let client = match LolClient::new() {
         Ok(t) => { t },
         Err(_) => {
-            println!("YOu need to initialize the client first !");
+            println!("You need to open LoL client first !");
             std::process::exit(1)
         }
     };
